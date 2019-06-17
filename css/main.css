@@ -1,3 +1,12 @@
-h1 {
-    font-family: 'Courier New', Courier, monospace;
+body {
+    font-family: 'Roboto Mono', monospace;
+    width: 100%;
+    margin: auto;
+}
+
+.mainContainer {
+    background-color: lightblue;
+    width: 80%;
+    margin: auto;
+    text-align: center;
 }
