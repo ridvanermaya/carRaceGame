@@ -1,12 +1,54 @@
 body {
     font-family: 'Roboto Mono', monospace;
-    width: 100%;
+    width: 90%;
     margin: auto;
+    background-color: lightcyan;
 }
 
 .mainContainer {
-    background-color: lightblue;
-    width: 80%;
-    margin: auto;
+    background-color: rgb(207, 236, 246);
     text-align: center;
+    border-radius: 10px;
+    max-width: 100%;
+    margin-top: 20px;
+}
+
+.mainTitle {
+    color: rgb(115, 106, 190);
+    margin: 20px;
+}
+
+.titleBreaker {
+    width: 90%;
+    margin-top: 0px;
+}
+
+#btn_start_game {
+    display: block;
+    margin: auto;
+}
+
+#btn_rules {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#btn_roll_dice {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#playerIcons {
+    width: 40%;
+    height: auto;
+}
+
+.playerScore {
+    height: 100px;
+    width: 40%;
+    margin: auto;
+    font-size: 65px;
+    background-color: whitesmoke;
 }

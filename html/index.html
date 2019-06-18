@@ -12,79 +12,92 @@
     <body>
         <div class="container mainContainer">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 mainTitle">
                     <h1>Race Car Game</h1>
                 </div>
-                <div class="col-6">
+                <hr class="titleBreaker">
+            </div>
+            <div class="row">
+                <div class="col-5">
                     <h2 id="player_one_name">Player 1</h2>
-                    <h4>Score: </h4>
-                    <p id="player_one_score" class="playerOneScore">200</p>
+                    <img id="playerIcons" src="/images/playerOneIcon.svg" alt="Player One Icon">
+                    <h5>Total Score</h5>
+                    <p id="player_one_score" class="playerScore">200</p>
                 </div>
-                <div class="col-6">
+                <div class="col-2">
+                    <div class="row">
+                        <button id="btn_start_game" class="btn-lg btn-primary" type="button" onclick="startNewGame()">Start Game</button>
+                    </div>
+                    <div class="row">
+                        <button id="btn_rules" type="button" class="btn-lg btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">Rules</button>
+                    </div>
+                    <div class="row">
+                        <button id="btn_roll_dice" class="btn-lg btn-primary" type="button" onclick="rollDice()" disabled>Roll Dice</button>
+                    </div>
+                </div>
+                <div class="col-5">
                     <h2 id="player_two_name">Player 2</h2>
-                    <h4>Score: </h4>
-                    <p id="player_two_score" class="playerTwoScore">200</p>
+                    <img id="playerIcons" src="/images/playerTwoIcon.svg" alt="Player Two Icon">
+                    <h5>Total Score</h5>
+                    <p id="player_two_score" class="playerScore">200</p>
                 </div>
             </div>
             <div class="row">
                 <p id="player_one_events" class="col-6">Player 1 Events</p>
                 <p id="player_two_events" class="col-6">Player 2 Events</p>
             </div>
-            <button id="btn_start_game" class="btn-lg" type="button" onclick="startNewGame()">Start New Game</button>
-            <button id="btn_roll_dice" class="btn-lg" type="button" onclick="rollDice()">Roll Dice</button>
-            <button type="button" class="btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Rules</button>
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Rules</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Rules</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>First Lap</h5>
+                            <hr>
+                            <p>
+                                1. Four-sided two dice will be used.<br>
+                                2. Your points will be determined by the numbers on the dice.<br>
+                                3. If you get double, your point for that round will be doubled too!<br>
+                                <br>
+                                <br>
+                            </p>
+                            <h5>Second Lap</h5>
+                            <hr>
+                            <p>
+                                1. A six-sided die will be used.<br>
+                                2. If you roll "1,2, or 4", you will get regular points.<br>
+                                3. If you roll "3", you lose 3 points.<br>
+                                4. If you roll "5", oil spills you lose 5 points.<br>
+                                5. If you roll "6", turbo boost you double and get 12 points.
+                                <br>
+                                <br>
+                            </p>
+                            <h5>Third Lap / Last Lap</h5>
+                            <hr>
+                            <p>
+                                1. A twelve-sided die will be used.<br>
+                                2. If you roll "2,4", you get regular points.<br>
+                                3. If you roll "1 or 6", you get double points.<br>
+                                4. If you roll "3", the computer will roll a eight-sided die.(This will be random and the computer will let you know what you get on events screen.)<br>
+                                5. If you roll "5", oil spills you lose 5 points.<br>
+                                6. If you roll "7", computer will roll a ten-sided die.(This will be random and the computer will let you know what you get on events screen.)<br>
+                                7. If you roll "8", accident you lose 10 points.<br>
+                                8. If you roll "9", ran into a town you lose 5 points.<br>
+                                9. If you roll "10", you get +15 points.<br>
+                                10. If you roll "11", burst tire you lose 8 points.<br>
+                                11. If you roll "12", the computer will roll a 20-sided die.(This will be random and the computer will let you know what you get on events screen.)
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <h5>First Lap</h5>
-                        <hr>
-                        <p>
-                            1. Four-sided two dice will be used.<br>
-                            2. Your points will be determined by the numbers on the dice.<br>
-                            3. If you get double, your point for that round will be doubled too!<br>
-                            <br>
-                            <br>
-                        </p>
-                        <h5>Second Lap</h5>
-                        <hr>
-                        <p>
-                            1. A six-sided die will be used.<br>
-                            2. If you roll "1,2, or 4", you will get regular points.<br>
-                            3. If you roll "3", you lose 3 points.<br>
-                            4. If you roll "5", oil spills you lose 5 points.<br>
-                            5. If you roll "6", turbo boost you double and get 12 points.
-                            <br>
-                            <br>
-                        </p>
-                        <h5>Third Lap / Last Lap</h5>
-                        <hr>
-                        <p>
-                            1. A twelve-sided die will be used.<br>
-                            2. If you roll "2,4", you get regular points.<br>
-                            3. If you roll "1 or 6", you get double points.<br>
-                            4. If you roll "3", the computer will roll a eight-sided die.(This will be random and the computer will let you know what you get on events screen.)<br>
-                            5. If you roll "5", oil spills you lose 5 points.<br>
-                            6. If you roll "7", computer will roll a ten-sided die.(This will be random and the computer will let you know what you get on events screen.)<br>
-                            7. If you roll "8", accident you lose 10 points.<br>
-                            8. If you roll "9", ran into a town you lose 5 points.<br>
-                            9. If you roll "10", you get +15 points.<br>
-                            10. If you roll "11", burst tire you lose 8 points.<br>
-                            11. If you roll "12", the computer will roll a 20-sided die.(This will be random and the computer will let you know what you get on events screen.)
-                            <br>
-                            <br>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
                 </div>
             </div>
         </div>

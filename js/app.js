@@ -20,6 +20,7 @@ function startNewGame() {
     playerTwoEvents.innerHTML = "The game is starting";
     p1Score = 0;
     p2Score = 0;
+    btnRollDice.removeAttribute("disabled");
 }
 
 function randomNumber(n) {
