@@ -100,3 +100,7 @@ body {
 #player_two_events {
     margin: 20px auto;
 }
+
+.btn-lg:focus {
+    outline: none;
+}
