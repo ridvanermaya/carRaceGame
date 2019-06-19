@@ -318,7 +318,7 @@ function rollDice() {
             let randomNumber2 = randomNumber(10);
             score = randomNumber1 + randomNumber2;
             playerTwoEvents.innerHTML = "You rolled an additional 10-sided die. You scored " + score + " points.";
-            p1Score += score;
+            p2Score += score;
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
