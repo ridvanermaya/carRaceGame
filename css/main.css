@@ -56,13 +56,14 @@ body {
 
 .eventsBox {
     margin-top:20px;
+    height: auto;
 }
 
 .eventRectangle {
     width: 80%;
     background-color: whitesmoke;
     margin: auto;
-    height: 200px;
+    height: auto;
     margin-bottom: 20px;
     border-radius: 5px;
 }
@@ -77,11 +78,11 @@ body {
 }
 
 #player_one_event_img1 {
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
 #player_one_event_img2 {
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
 #player_one_events {
@@ -89,11 +90,11 @@ body {
 }
 
 #player_two_event_img1 {
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
 #player_two_event_img2 {
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
 #player_two_events {

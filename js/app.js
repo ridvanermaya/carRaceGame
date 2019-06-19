@@ -47,6 +47,10 @@ function startNewGame() {
     playerOneScore.innerHTML = p1Score;
     playerTwoScore.innerHTML = p2Score;
     btnRollDice.removeAttribute("disabled");
+    playerOneEventImg1.setAttribute("src", "/images/dice.svg");
+    playerOneEventImg2.setAttribute("src", "/images/dice.svg");
+    playerTwoEventImg1.setAttribute("src", "/images/dice.svg");
+    playerTwoEventImg2.setAttribute("src", "/images/dice.svg");
 }
 
 function randomNumber(number) {
@@ -67,14 +71,14 @@ function eventCreator (event) {
 function rollDice() {
     let score;
     if (p1Score < 100) {
+        p1SecondLapProgressBar.style.width = "0%";
+        p1ThirdLapProgressBar.style.width = "0%";
         let randomNumber1 = randomNumber(4);
         let randomNumber2 = randomNumber(4);
         if (randomNumber1 === randomNumber2) {
             score = (randomNumber1 + randomNumber2) * 2;
             playerOneEvents.innerHTML = "Wow you got doubles!!! You got " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1FirstLapProgressBar.style.width = p1Score + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -82,20 +86,17 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerOneEvents.innerHTML = "Nothing is special, you got " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1FirstLapProgressBar.style.width = p1Score + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
     }
-    if (p1Score < 200 && p1Score >= 100) {
+    else if (p1Score < 200 && p1Score >= 100) {
+        p1ThirdLapProgressBar.style.width = "0%";
         let randomNumber1 = randomNumber(6);
         if (randomNumber1 === 1 || randomNumber1 === 2 || randomNumber1 === 4) {
             score = randomNumber1;
             playerOneEvents.innerHTML = "Nothing is special, you got " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1SecondLapProgressBar.style.width = p1Score - 100 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("nothingSpecial"));
         }
@@ -103,8 +104,6 @@ function rollDice() {
             score = -3;
             playerOneEvents.innerHTML = "Your tire burst, you lose 3 points";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1SecondLapProgressBar.style.width = p1Score - 100 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("tire"));
         }
@@ -112,10 +111,7 @@ function rollDice() {
             score = 5;
             playerOneEvents.innerHTML = "You scored " + score + ", oil spills for the other player. The other player loses 5 points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
             p2Score -= 5;
-            playerTwoScore.innerHTML = p2Score;
-            p1SecondLapProgressBar.style.width = p1Score - 100 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("oilSpill"));
         }
@@ -123,20 +119,16 @@ function rollDice() {
             score = randomNumber1 * 2;
             playerOneEvents.innerHTML = "Wow you rolled " + randomNumber1 + " and you got " + score + " points";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1SecondLapProgressBar.style.width = p1Score - 100 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("double"));
         }
     }
-    if (p1Score >= 200 && p1Score < 300) {
+    else if (p1Score >= 200 && p1Score < 300) {
         let randomNumber1 = randomNumber(12);
         if (randomNumber1 === 2 || randomNumber1 === 4) {
             score = randomNumber1;
             playerOneEvents.innerHTML = "Nothing is special, your score is " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("nothingSpecial"));
             
@@ -145,8 +137,6 @@ function rollDice() {
             score = randomNumber1 * 2;
             playerOneEvents.innerHTML = "Wow you got doubles!! Your score is " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("double"));
         }
@@ -154,10 +144,7 @@ function rollDice() {
             score = randomNumber1;
             playerOneEvents.innerHTML = "You spilled oil on the road, the other player loses 5 points. Your score is " + randomNumber1 + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
             p2Score -= 5;
-            playerTwoScore.innerHTML = p2Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("oilSpill"));
         }
@@ -165,8 +152,6 @@ function rollDice() {
             score = -10;
             playerOneEvents.innerHTML = "You got into an accident and lost 10 points";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("carCrash"));
         }
@@ -174,8 +159,6 @@ function rollDice() {
             score = -5;
             playerOneEvents.innerHTML = "You ran into a town, TRAFFIC, lost 5 points";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("town"));
         }
@@ -183,8 +166,6 @@ function rollDice() {
             score = randomNumber1 + 15;
             playerOneEvents.innerHTML = "You used turbo boost. You scored " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("turbo"));
         }
@@ -192,8 +173,6 @@ function rollDice() {
             score = -8;
             playerOneEvents.innerHTML = "One of your tire burst. You lost 8 points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", eventCreator("tire"));
         }
@@ -202,8 +181,6 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerOneEvents.innerHTML = "You rolled an additional 8-sided die. You scored " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -212,8 +189,6 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerOneEvents.innerHTML = "You rolled an additional 10-sided die. You scored " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML = p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -222,21 +197,19 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerOneEvents.innerHTML = "You rolled an additional 20-sided die. You scored " + score + " points.";
             p1Score += score;
-            playerOneScore.innerHTML + p1Score;
-            p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
             playerOneEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerOneEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
     }
     if (p2Score < 100) {
+        p2SecondLapProgressBar.style.width = "0%";
+        p2ThirdLapProgressBar.style.width = "0%";
         let randomNumber1 = randomNumber(4);
         let randomNumber2 = randomNumber(4);
         if (randomNumber1 === randomNumber2) {
             score = (randomNumber1 + randomNumber2) * 2;
             playerTwoEvents.innerHTML = "Wow you got doubles!!! You got " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2FirstLapProgressBar.style.width = p2Score + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -244,20 +217,16 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerTwoEvents.innerHTML = "Nothing is special, you got " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2FirstLapProgressBar.style.width = p2Score + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
     }
-    if (p2Score < 200 && p2Score >= 100) {
+    else if (p2Score < 200 && p2Score >= 100) {
         let randomNumber1 = randomNumber(6);
         if (randomNumber1 === 1 || randomNumber1 === 2 || randomNumber1 === 4) {
             score = randomNumber1;
             playerTwoEvents.innerHTML = "Nothing is special, you got " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2SecondLapProgressBar.style.width = p2Score - 100 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("nothingSpecial"));
         }
@@ -265,8 +234,6 @@ function rollDice() {
             score = -3;
             playerTwoEvents.innerHTML = "Your tire burst, you lose 3 points";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2SecondLapProgressBar.style.width = p2Score - 100 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("tire"));
         }
@@ -274,10 +241,7 @@ function rollDice() {
             score = 5;
             playerTwoEvents.innerHTML = "You scored " + score + ", oil spill for the other player. The other player loses 5 points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
             p1Score -= 5;
-            playerOneScore.innerHTML = p1Score;
-            p2SecondLapProgressBar.style.width = p2Score - 100 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("oilSpill"));
         }
@@ -285,20 +249,16 @@ function rollDice() {
             score = randomNumber1 * 2;
             playerTwoEvents.innerHTML = "Wow you rolled " + randomNumber1 + " and you got " + score + " points";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2SecondLapProgressBar.style.width = p2Score - 100 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("double"));
         }
     }
-    if (p2Score >= 200 && p2Score < 300) {
+    else if (p2Score >= 200 && p2Score < 300) {
         let randomNumber1 = randomNumber(12);
         if (randomNumber1 === 2 || randomNumber1 === 4) {
             score = randomNumber1;
             playerTwoEvents.innerHTML = "Nothing is special, your score is " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("nothingSpecial"));
         }
@@ -306,8 +266,6 @@ function rollDice() {
             score = randomNumber1 * 2;
             playerTwoEvents.innerHTML = "Wow you got doubles!! Your score is " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("double"));
         }
@@ -317,8 +275,6 @@ function rollDice() {
             p2Score += score;
             playerTwoScore.innerHTML = p2Score;
             p1Score -= 5;
-            playerOneScore.innerHTML = p1Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("oilSpill"));
         }
@@ -326,8 +282,6 @@ function rollDice() {
             score = -10;
             playerTwoEvents.innerHTML = "You got into an accident and lost 10 points";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("carCrash"));
         }
@@ -335,8 +289,6 @@ function rollDice() {
             score = -5;
             playerTwoEvents.innerHTML = "You ran into a town, TRAFFIC, lost 5 points";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("town"));
         }
@@ -344,8 +296,6 @@ function rollDice() {
             score = randomNumber1 + 15;
             playerTwoEvents.innerHTML = "You used turbo boost. You scored " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("turbo"));
         }
@@ -353,8 +303,6 @@ function rollDice() {
             score = -8;
             playerTwoEvents.innerHTML = "One of your tire burst. You lost 8 points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", eventCreator("tire"));
         }
@@ -363,8 +311,6 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerTwoEvents.innerHTML = "You rolled an additional 8-sided die. You scored " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -373,8 +319,6 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerTwoEvents.innerHTML = "You rolled an additional 10-sided die. You scored " + score + " points.";
             p1Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         }
@@ -383,8 +327,6 @@ function rollDice() {
             score = randomNumber1 + randomNumber2;
             playerTwoEvents.innerHTML = "You rolled an additional 20-sided die. You scored " + score + " points.";
             p2Score += score;
-            playerTwoScore.innerHTML = p2Score;
-            p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
             playerTwoEventImg1.setAttribute("src", attrCreator(randomNumber1));
             playerTwoEventImg2.setAttribute("src", attrCreator(randomNumber2));
         } 
@@ -411,4 +353,15 @@ function rollDice() {
         playerTwoScore.innerHTML = 300;
         btnRollDice.setAttribute("disabled", "true");
     }
+
+    p1FirstLapProgressBar.style.width = p1Score + "%";
+    p1SecondLapProgressBar.style.width = p1Score - 100 + "%";
+    p1ThirdLapProgressBar.style.width = p1Score - 200 + "%";
+    p2FirstLapProgressBar.style.width = p2Score + "%";
+    p2SecondLapProgressBar.style.width = p2Score - 100 + "%";
+    p2ThirdLapProgressBar.style.width = p2Score - 200 + "%";
+
+    playerOneScore.innerHTML = p1Score;
+    playerTwoScore.innerHTML = p2Score;
+
 }
